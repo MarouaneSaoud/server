@@ -5,26 +5,17 @@ const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
 
 const app = express();
-
-app.listen(4000, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log("Server Started Successfully.");
-  }
-});
-
+//----server setting-----//
+require("dotenv").config();
 mongoose
-  .connect("mongodb://localhost:27017/my_db", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("DB Connetion Successfull");
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
+  .connect(process.env.mongo_url, { dbName: "db_node_Project" })
+  .then((result) =>
+    app.listen(process.env.Port, function () {
+      console.log("Server is starting");
+    })
+  )
+  .catch((error) => console.log(error));
+
 
 app.use(
   cors({
