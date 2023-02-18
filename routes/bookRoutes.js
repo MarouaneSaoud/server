@@ -3,7 +3,7 @@ const router=express.Router()
 const bookController=require("../controllers/BookController")
 router.route("/").get(bookController.getBooks)
                  .post(bookController.addBook)
-router.route("/:id").put(bokkController.updateBook)
+router.route("/:id").put(bookController.updateBook)
                      .delete(bookController.deleteBook)
                      .get(bookController.getBook)
 
