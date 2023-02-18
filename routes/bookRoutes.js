@@ -1,10 +1,10 @@
 const express=require("express")
 const router=express.Router()
-const catalController=require("../controllers/catalogue.controller")
-router.route("/").get(catalController.getBooks)
-                 .post(catalController.addBook)
-router.route("/:id").put(catalController.updateBook)
-                     .delete(catalController.deleteBook)
-                     .get(catalController.getBook)
+const bookController=require("../controllers/BookController")
+router.route("/").get(bookController.getBooks)
+                 .post(bookController.addBook)
+router.route("/:id").put(bokkController.updateBook)
+                     .delete(bookController.deleteBook)
+                     .get(bookController.getBook)
 
 module.exports=router
