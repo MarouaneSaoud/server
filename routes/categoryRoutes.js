@@ -1,7 +1,8 @@
-const express=require("express")
-const router=express.Router()
-const catalController=require("../controllers/catalogue.controller")
-router.route("/categories").get(catalController.getCategories)
-                            .post(catalController.addCategory)
-router.route("/categories/:id").delete(catalController.deleteCategory)
-module.exports=router
+const express = require("express");
+const router = express.Router();
+const catalogueController = require("../controllers/catalogue.controller");
+
+router.get("/", catalogueController.getCategories);
+router.get("/:id", catalogueController.ge);
+
+module.exports = router;

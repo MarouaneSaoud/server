@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
+const catalogueRoutes = require("./routes/categoryRoutes")
 
 const app = express();
 //----server setting-----//
@@ -29,3 +30,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads/ProfileImage'))
 app.use(cookieParser());
 app.use("/", authRoutes);
+app.use("/catalogue" , catalogueRoutes)
