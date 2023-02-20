@@ -1,9 +1,13 @@
 const Book = require("../model/Book");
+const counBook = async () => {
+  return await Book.find().count();
+};
 const getAllBooks = async () => {
   return await Book.find()
     .populate({ path: "categorie", select: ["name", "description"] })
     .sort({ date_publication: 1 });
 };
+
 const createBook = async (b) => {
   return await Book.create(b);
 };
@@ -20,6 +24,7 @@ const updateBook = async (id, b) => {
   return await Book.findByIdAndUpdate({ _id: id }, b, { new: true });
 };
 module.exports = {
+  counBook,
   getAllBooks,
   createBook,
   getBookById,
