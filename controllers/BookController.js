@@ -1,4 +1,13 @@
 const bookService = require("../services/BookServices");
+
+const countBook = async (req, res) => {
+  try {
+    const cmp = await bookService.counBook();
+    res.status(200).json({ bookCount: cmp });
+  } catch {
+    res.status(500).json(error);
+  }
+};
 const getBooks = async (req, res) => {
   try {
     const books = await bookService.getAllBooks();
@@ -40,6 +49,7 @@ const addBook = async (req, res) => {
   }
 };
 module.exports = {
+  countBook,
   getBooks,
   getBook,
   deleteBook,
