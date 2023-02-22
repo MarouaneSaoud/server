@@ -25,6 +25,10 @@ const bookSchema = new mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  price :{
+    type:Number,
+    required:true,
+  },
   image: {
     type: String,
   },
