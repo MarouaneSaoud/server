@@ -43,15 +43,36 @@ const updateBook = async (req, res) => {
 const addBook = async (req, res) => {
   console.log("marouane qui dit");
   try {
-    const {name,description,isbn,auteur,editeur,date_publication, price,category}=req.body;
-    const book={name:name,description:description,isbn:isbn,auteur:auteur,editeur:editeur,date_publication:date_publication,price:price,category:category,image: file.path}
-  
-    await bookService.createBook(book);
+    const { file } = req;
     console.log(file);
+    
+    const {
+      name,
+      description,
+      isbn,
+      auteur,
+      editeur,
+      date_publication,
+      price,
+      category,
+    } = req.body;
+    const book = {
+      name: name,
+      description: description,
+      isbn: isbn,
+      auteur: auteur,
+      editeur: editeur,
+      date_publication: date_publication,
+      price: price,
+      category: category,
+      image: file.path,
+    };
     console.table(book);
+    await bookService.createBook(book);
     res.status(201).json({ msg: "Book Added" });
   } catch (error) {
     res.status(500).json(error);
+    console.log("hdhdh");
   }
 };
 module.exports = {
