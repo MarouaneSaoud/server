@@ -4,8 +4,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
 const bookRoutes = require("./routes/bookRoutes")
-const categoryRoutes = require("./routes/CategoryRoutes")
-const ApiCalled = require("./middlewares/ApiCalled")
+
 
 const app = express();
 //----server setting-----//
@@ -30,10 +29,6 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads/ProfileImage'))
-app.use(express.static('uploads/BookImage'))
 app.use(cookieParser());
-app.use(ApiCalled)
 app.use("/", authRoutes);
 app.use("/book" , bookRoutes)
-app.use("/category" , categoryRoutes)
-

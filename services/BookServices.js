@@ -4,7 +4,7 @@ const counBook = async () => {
 };
 const getAllBooks = async () => {
   return await Book.find()
-    .populate({ path: "category", select: ["name", "description"] })
+    .populate({ path: "categorie", select: ["name", "description"] })
     .sort({ date_publication: 1 });
 };
 
@@ -13,7 +13,7 @@ const createBook = async (b) => {
 };
 const getBookById = async (id) => {
   return await Book.findOne({ _id: id }).populate({
-    path: "category",
+    path: "categorie",
     select: ["name", "description"],
   });
 };
