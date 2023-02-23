@@ -12,6 +12,7 @@ const getBooks = async (req, res) => {
   try {
     const books = await bookService.getAllBooks();
     res.status(200).json(books);
+    console.log(books);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -28,24 +29,24 @@ const deleteBook = async (req, res) => {
   try {
     await bookService.deleteBookById(req.params.id);
     res.status(200).json({ msg: "Book deleted" });
+    console.log(req.params.id);
   } catch (error) {
     res.status(500).json(error);
   }
 };
 const updateBook = async (req, res) => {
   try {
-    await bookService.updateBook(req.body);
+    await bookService.updateBook(req.params.id,req.body);
+    console.log(req.body);
     res.status(200).json({ msg: "Book modified" });
   } catch (error) {
     res.status(500).json(error);
   }
 };
 const addBook = async (req, res) => {
-  console.log("marouane qui dit");
+ 
   try {
     const { file } = req;
-    console.log(file);
-    
     const {
       name,
       description,
@@ -65,14 +66,12 @@ const addBook = async (req, res) => {
       date_publication: date_publication,
       price: price,
       category: category,
-      image: file.path,
+      image: file.path.replace("uploads\\BookImage\\",""),
     };
-    console.table(book);
     await bookService.createBook(book);
     res.status(201).json({ msg: "Book Added" });
   } catch (error) {
     res.status(500).json(error);
-    console.log("hdhdh");
   }
 };
 module.exports = {

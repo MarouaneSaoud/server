@@ -1,24 +1,26 @@
-const express = require ("express");
-const Categories=require("../model/Category")
+const express = require("express");
+const Category = require("../model/Category");
 
-async function addCategory(categorie){
-    //return await Categories.create(categorie)
-   return await Categories.create(categorie)
+async function getAllCategories() {
+  return await Category.find({});
 }
-
-async function getAllCategories(){
-    return await Categories.find();
+const getCategoryById = async (id) => {
+  return await Category.findOne({ _id: id });
+};
+async function addCategory(categorie) {
+  return await Category.create(categorie);
 }
- const updateCategory = async(id,categorie)=> {
-    return await Categories.findOneAndUpdate({_id:id},categorie,{new:true});
+const updateCategory = async (id, categorie) => {
+  return await Category.findOneAndUpdate({ _id: id }, categorie, { new: true });
+};
 
- }
- const getCategoryById= async (id) =>{
-    return await Categories.findOne({_id:id});
- }
- const deleteCategoryById= async (id) =>{
-    return await Categories.deleteOne({_id:id})
- }
- module.exports={
-    addCategory,getAllCategories,updateCategory ,getCategoryById,deleteCategoryById
- }
+const deleteCategoryById = async (id) => {
+  return await Category.deleteOne({ _id: id });
+};
+module.exports = {
+  addCategory,
+  getAllCategories,
+  updateCategory,
+  getCategoryById,
+  deleteCategoryById,
+};

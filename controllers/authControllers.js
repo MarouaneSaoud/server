@@ -25,7 +25,7 @@ const handleErrors = (err) => {
   }
 
   if (err.code === 11000) {
-    errors.email = "Email is already registered";
+    errors.email = "Email or name is already used";
     return errors;
   }
 
@@ -43,7 +43,8 @@ module.exports.register = async (req, res, next) => {
     const { file } = req;
     console.log(file);
     const { name ,email, password } = req.body;
-    const userTemp = { name : name ,email : email, password : password,image :file.path }
+    const userTemp = { name : name ,email : email, password : password,image :file.path.replace('uploads\\ProfileImage\\',''), }
+    console.log(userTemp.image);
     const user = await User.create(userTemp);
     console.table(userTemp);
     const token = createToken(user._id);

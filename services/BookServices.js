@@ -15,13 +15,14 @@ const getBookById = async (id) => {
   return await Book.findOne({ _id: id }).populate({
     path: "category",
     select: ["name", "description"],
-  });
+  })
+  .sort({ date_publication: 1 });
 };
 const deleteBookById = async (id) => {
-  return await Book.deleteOne(id);
+  return await Book.deleteOne({_id:id});
 };
-const updateBook = async (id, b) => {
-  return await Book.findByIdAndUpdate({ _id: id }, b, { new: true });
+const updateBook = async (id, book) => {
+  return await Book.findByIdAndUpdate({ _id: id }, book, { new: true });
 };
 module.exports = {
   counBook,

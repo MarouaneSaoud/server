@@ -5,7 +5,7 @@ router
   .get(categoryController.getAllCategories)
   .post(categoryController.createCategory);
 router
-  .route("/id")
+  .route("/:id")
   .put(categoryController.updateCategoryByID)
   .delete(categoryController.deleteCatgory)
   .get(categoryController.getCategoryById);
