@@ -2,7 +2,8 @@ const express = require ("express");
 const Categories=require("../model/Category")
 
 async function addCategory(categorie){
-    return await Categories.create(categorie)
+    //return await Categories.create(categorie)
+   return await Categories.create(categorie)
 }
 
 async function getAllCategories(){

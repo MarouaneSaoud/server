@@ -1,4 +1,4 @@
-const express = requitre("express")
+const express = require("express")
 const router = express.Router();
 const categoryController= require("../controllers/categoryControllers")
 router.route("/")
@@ -8,3 +8,4 @@ router.route("/id")
       .put(categoryController.updateCategoryByID)
       .delete(categoryController.deleteCatgory)
       .get(categoryController.getCategoryById);
+module.exports=router;

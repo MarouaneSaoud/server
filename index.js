@@ -3,7 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
-const bookRoutes = require("./routes/bookRoutes")
+const bookRoutes = require("./routes/bookRoutes");
+const categoryRoutes=require("./routes/categoryRoutes");
 
 
 const app = express();
@@ -31,4 +32,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('uploads/ProfileImage'))
 app.use(cookieParser());
 app.use("/", authRoutes);
-app.use("/book" , bookRoutes)
+app.use("/book" , bookRoutes);
+app.use("/category",categoryRoutes);
