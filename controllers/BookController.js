@@ -25,6 +25,15 @@ const getBook = async (req, res) => {
     res.status(500).json(error);
   }
 };
+const getBookByCategory = async (req, res) => {
+  try {
+    const books = await bookService.getBookByCategory(req.params.book);
+    res.status(200).json(books);
+    console.log(req.params.book);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
 const deleteBook = async (req, res) => {
   try {
     await bookService.deleteBookById(req.params.id);
@@ -36,7 +45,7 @@ const deleteBook = async (req, res) => {
 };
 const updateBook = async (req, res) => {
   try {
-    await bookService.updateBook(req.params.id,req.body);
+    await bookService.updateBook(req.params.id, req.body);
     console.log(req.body);
     res.status(200).json({ msg: "Book modified" });
   } catch (error) {
@@ -44,7 +53,6 @@ const updateBook = async (req, res) => {
   }
 };
 const addBook = async (req, res) => {
- 
   try {
     const { file } = req;
     const {
@@ -66,7 +74,7 @@ const addBook = async (req, res) => {
       date_publication: date_publication,
       price: price,
       category: category,
-      image: file.path.replace("uploads\\BookImage\\",""),
+      image: file.path.replace("uploads\\BookImage\\", ""),
     };
     await bookService.createBook(book);
     res.status(201).json({ msg: "Book Added" });
@@ -74,11 +82,23 @@ const addBook = async (req, res) => {
     res.status(500).json(error);
   }
 };
+const DeleteImage= async(request, response)=>{
+  try{
+    await bookService.deleteImg(request.params.imgname)
+    response.status(200).json({ msg: `image deleted` });
+  }catch (error) {
+    console.log(error);
+    response.status(500).json({ msg: error });
+  }
+
+};
 module.exports = {
+  DeleteImage,
   countBook,
   getBooks,
   getBook,
   deleteBook,
   updateBook,
   addBook,
+  getBookByCategory,
 };
