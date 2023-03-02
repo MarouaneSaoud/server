@@ -12,7 +12,6 @@ const getBooks = async (req, res) => {
   try {
     const books = await bookService.getAllBooks();
     res.status(200).json(books);
-    console.log(books);
   } catch (error) {
     res.status(500).json(error);
   }
@@ -29,7 +28,6 @@ const getBookByCategory = async (req, res) => {
   try {
     const books = await bookService.getBookByCategory(req.params.book);
     res.status(200).json(books);
-    console.log(req.params.book);
   } catch (error) {
     res.status(500).json(error);
   }
