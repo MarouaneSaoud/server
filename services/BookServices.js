@@ -1,7 +1,7 @@
 const Book = require("../model/Book");
 const fs = require("fs");
 const path = require("path");
-const counBook = async () => {
+const countBook = async () => {
   return await Book.find().count();
 };
 const getAllBooks = async () => {
@@ -50,7 +50,7 @@ const deleteImg = async (imagename) => {
 };
 module.exports = {
   deleteImg,
-  counBook,
+  countBook,
   getAllBooks,
   createBook,
   getBookById,

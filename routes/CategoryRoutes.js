@@ -9,4 +9,5 @@ router
   .put(categoryController.updateCategoryByID)
   .delete(categoryController.deleteCatgory)
   .get(categoryController.getCategoryById);
+router.get("/count", categoryController.countcat);
 module.exports = router;

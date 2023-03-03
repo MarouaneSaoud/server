@@ -1,6 +1,9 @@
 const express = require("express");
 const Category = require("../model/Category");
 
+const countcat = async () => {
+  return await Category.find().count();
+};
 async function getAllCategories() {
   return await Category.find({});
 }
@@ -18,6 +21,7 @@ const deleteCategoryById = async (id) => {
   return await Category.deleteOne({ _id: id });
 };
 module.exports = {
+  countcat,
   addCategory,
   getAllCategories,
   updateCategory,

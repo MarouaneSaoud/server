@@ -2,7 +2,7 @@ const bookService = require("../services/BookServices");
 
 const countBook = async (req, res) => {
   try {
-    const cmp = await bookService.counBook();
+    const cmp = await bookService.countBook();
     res.status(200).json({ bookCount: cmp });
   } catch {
     res.status(500).json(error);
