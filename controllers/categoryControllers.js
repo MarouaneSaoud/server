@@ -3,9 +3,8 @@ const categoryService = require("../services/CategoryServices");
 
 const countcat = async (req, res) => {
   try {
-    const cmp = await categoryService.countcat()
+    const cmp = await categoryService.countcat();
     res.status(200).json({ catCount: cmp });
-    console.log("dd")
   } catch {
     res.status(500).json(error);
   }
@@ -60,5 +59,5 @@ module.exports = {
   createCategory,
   updateCategoryByID,
   deleteCatgory,
-  countcat
+  countcat,
 };
